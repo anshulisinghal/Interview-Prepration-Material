@@ -1,0 +1,52 @@
+
+
+Git commands
+When branch is forced push and u don’t have any commits on the branch locally
+git stash
+git fetch
+git reset --hard origin/{branch name}
+git status
+git stash pop
+
+To get git commands in history
+history | grep git | cut -c7-
+
+To remove previous commit
+git reset HEAD~
+To remove previous commit and changes
+git reset --hard HEAD~1
+
+git rebase -i HEAD~3 - to amend commits
+To delete local merged branches
+git branch | xargs git branch -d
+change last commit message
+git commit --amend -m "an updated commit message”
+git push -f
+
+git reset 
+Git commands
+git stash save -u stashed-for-rebase # if you have uncommitted changes only
+git fetch && git checkout develop && git pull --rebase && git checkout send_consent_to_LM_LtI2yUIE && git rebase develop
+git stash pop # if you had uncommitted changes only
+
+Git global setup
+git config --global user.name "Anshuli Singhal"
+git config --global user.email "sanshuli@vmware.com"
+Create a new repository
+git clone git@gitlab.eng.vmware.com:snb-pod/Microservices_V2/dataintegraionservice.gitcd dataintegraionservice
+git switch -c main
+touch README.md
+git add README.md
+git commit -m "add README"
+git push -u origin main
+Push an existing folder
+cd existing_folder
+git init --initial-branch=main
+git remote add origin git@gitlab.eng.vmware.com:snb-pod/Microservices_V2/dataintegraionservice.gitgit add .
+git commit -m "Initial commit"
+git push -u origin main
+Push an existing Git repository
+cd existing_repo
+git remote rename origin old-origin
+git remote add origin git@gitlab.eng.vmware.com:snb-pod/Microservices_V2/dataintegraionservice.gitgit push -u origin --all
+git push -u origin --tags
