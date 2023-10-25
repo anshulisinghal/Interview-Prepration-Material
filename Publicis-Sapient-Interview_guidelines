@@ -1,0 +1,159 @@
+Publicis Sapient
+
+Questions
+- 2hrs
+- 20-30 mins - scenario based code and design 
+- 90-100 mins
+- Each section
+- 40-50 min
+
+- 20-30 mins - scenario based code and design
+- 
+- 
+- Left 
+High level coding
+
+
+
+Section 1
+Java
+
+- Solution completeness. - design search based service , manage various exception scenario, advice exception handling, http code
+- Code quality
+- Exception handling
+
+
+Language fundamentals , solid understand
+- Basic of code java, OOPS, immutable class, was able to implement immutable class with mutable property, solid principle, appleid single responsibility in give scenario
+- Collection data structure, lists, array list, hash map, concurrent hash map, array list vs linked list
+- Java 8 - lamba expression, function interface, streams - filtering collection of object using stream map, filter map, predicate, parallel stream
+- GOF aware about creational, structural, behavioural
+- Explain thread safe singleton, proxy patter with example
+- Multithreading - various types of thread pools, virtual threads, context switching, synchronised and lock api
+- Messaging queue - Kafka, message retention, Event driven architecture, command vs event
+- Database - Index, partition, sharing, replication
+- JVM Profiler, GC basic, JVM configurations - basic of garbage collection, some idea about mark and sweep, minor GC and heap dump
+
+
+
+
+Section 2
+Solution and tooling
+Logical view, sequence view and application layering -> technical design documentation, component interaction, non functional requirements, sequence diagram and security requirement
+Solution architectural and architectural key points - > solution architecture template, architecture decision based on performance, open source availability
+NFRs - NFR for security, code linting, https for data and motion, cross scripting validation, data masking
+Other tech stacks will be discussed
+Prod support and bug fixing - cpu and memory profiling, query level logging, and root cause slowness, gap -> identifying memory leak
+Testing -> positives, unit testing, test coverage, cucumber, mockito, meter for perf testing 
+Build and automation - Jenkins, docker image, container registry, vulnerability detection ,gaps - Kubernetes configuration file
+Log and monitoring - ELK for log monitoring, log back, log stash, appender, prometheus, graphing for dashboard
+Any certification -> 
+Managing business as stake holder, owner for Self and team deliverable 
+
+
+Section 3
+Cloud and Microservices
+Rest pricinples, OAS consumer specs -> api contracts, have idea about idempotent service, various http status codes, service granularity.
+Microservice principle implementation -> CQRS, Event driven, can explain further pattern with examples, have idea of choreography and orchestration
+Caching -> Cache for API performance, Hibernate second level cache, Redis HazelCast for distributed cache
+Cloud Managed services -> CDN, Ingress, Object storage, AWS, SNS, Vaults for secret, container registry
+Cloud solution architecture -> Physical architecture for highly available web service, Gap - Sizing , Capex and TCO
+API security and basic auth -> API authentication, OAUTh, Okta, can explain basic life cycle of OAUTH
+API gateway and ESP usage -> Zulu, spring cloud gateway, rate limiting, load balancer, APIGEE
+
+
+
+Multi-tenancy for theatres
+
+how to share real time information regarding booked tickets from theaters to booking system - via webhooks, queues or api .or polling. 
+- When we call the different heaters api to update show details - have a mulesoft or camel to dynamically xml data for new data, at runtime integration is facilitated
+- Have a new java service for each kind of theatre.
+- 
+
+what is the design pattern or architecture pattern used
+
+how is resiliency achieved - DR, failovers, at code level, CB, bulk head, ( eg, during locking - we calling theater api, some theatres may have downtimes/delays, request are piling up, then CB can be used), retry
+
+how to store cache. will it be in memory or disk. 
+
+how to store movie information - mysql, and cache in redis or elastic search
+
+multi tenancy for multiple theaters 
+
+what will be release plan
+
+estimation 
+
+language related 
+
+multiple countries and region release plan - it depends whether we are hosting one system for each country. or if all countries have same system.
+
+
+
+Learning mindset. - how do you keep urself updated with technology, why upscaling is important, how it has helped. Messaging queue, k8s, AWS. Emerging technologies in Microservices. Looking 
+
+Engaging with openess - how drive with cross functional teams, how openly interact with other teams, how do you manage and resolve conflicts, how do manage ppl in team. Specific delivery and u came back with solution, the scenario of ur fellow member got selected - did u try upscale or got upset., how do u manage conflict with peers and reportees and how to grow them. Eg in ur current organisation, how do you make up and running and 2-3 months.
+
+Talk about production support as lead
+Talk about how you have helped ur team members to learn and grow. - STAR analysis. What are ur parameter on which u grow and give promotion. If someone is average we can put on PIP and how u would upscale. Will discuss personal professional problems, then offering 
+
+
+Inclusive collaboration - how do u collaborate with cross functional teams. How do u resolve conflicts  and resolve them and how u get everyone on the same page.
+
+Partnering a client impact -> how do you work with project managers, and help them in solutions, how u solve there queries, and how do you push back the product manager on deliveries.
+
+Embracing the future -> career aspirations, how do u see urself down the line. U being a technologist - will u take ppl management role. I m technologist and want to be 6-7 yrs down the line, if organisation wants me to use my expertise in other things and then I am ok to take extra responsibilities, but my aspirations are technology. I would like to see me as senior architect.
+
+
+
+
+Book movie tickets by selecting a theatre, timing, and preferred seats for the day
+
+
+LockedSeats - composite key on showId seatId
+
+ShowId
+SeatId
+Status - Locked, Released
+DateTime
+Version - can also be used
+
+LockedSeatsHistory - Move to history table after status is moved from locked to released
+
+
+1. Thread will keep polling locked seats and delete row from this table if 10 mins locking period exceeded  - frequency of running job can be 5 mins
+2. Checking in locked seats if that composite key already present or not then it will not insert.
+
+What will be frequency of polling job to release seats
+
+If user 1 proceeds to make payment 
+While he is completing the payment on merchant site, 10 mins exceeds, 
+Now locked rows are released by polling job
+Before user 1 is able to complete the payment,
+Another user locks the same seat and completes the payment 
+then what will happen to payment done by user 1?
+
+Prompt the user the below 2 options
+- Cancel the payment & Refund the payment
+- Give choice the user to select new seats from seat layout 
+
+
+- Validate read scenario, db design. 
+- Validate write scenario - how to validate already overlapping show
+
+
+Database discussion
+
+— Image url and image will be stored in s3, and image will be added in CDN
+
+- Cache to store available seats , eviction policy of cache -> all past date shows can be removed.
+- - Cache will be updated by each of the services
+
+
+
+
+
+
+
+
+
